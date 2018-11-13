@@ -14,10 +14,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        }
+      EditText  edUserid = findViewById(R.id.ed_userid);
+    String uid = getSharedPreferences("ATM",MODE_PRIVATE).getString("USERID","");
+    edUserid.setText(uid);
+    }
     public void login (View v) {
-        EditText edUserid = findViewById(R.id.ed_userid);
-        EditText edPasswd = findViewById(R.id.ed_password);
+        EditText  edUserid = findViewById(R.id.ed_userid);
+        EditText   edPasswd = findViewById(R.id.ed_password);
         String uid = edUserid.getText().toString();
         String pw = edPasswd.getText().toString();
         if (uid.equals("Andy") && pw.equals("666")) { //登入成功
@@ -25,6 +28,12 @@ public class LoginActivity extends AppCompatActivity {
             getIntent().putExtra("LOGIN_USERID", uid);
             getIntent().putExtra("LOGIN_PASSWD", pw);
             setResult(RESULT_OK, getIntent());
+Intent toNickName = new Intent(this,NickName.class);
+            startActivity(toNickName);
+       getSharedPreferences("ATM",MODE_PRIVATE)
+               .edit()
+               .putString("USERID",uid)
+               .apply();
             finish();
         } else { //登入失敗
             new AlertDialog.Builder(this)

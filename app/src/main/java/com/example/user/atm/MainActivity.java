@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
     private static final int RC_LOGIN = 100;
-    boolean logon = false;
+    boolean logon = true;
 
 
 

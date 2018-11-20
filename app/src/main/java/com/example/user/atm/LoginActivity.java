@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
             getIntent().putExtra("LOGIN_USERID", uid);
             getIntent().putExtra("LOGIN_PASSWD", pw);
             setResult(RESULT_OK, getIntent());
-Intent toNickName = new Intent(this,NickName.class);
+Intent toNickName = new Intent(this,NicknameActivity.class);
             startActivity(toNickName);
        getSharedPreferences("ATM",MODE_PRIVATE)
                .edit()

@@ -2,7 +2,14 @@ package com.example.user.atm;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private static final int RC_LOGIN = 100;
@@ -17,6 +24,14 @@ public class MainActivity extends BaseActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivityForResult(intent, RC_LOGIN);
         }
+        listView();
+    }
+
+    private void listView() {
+        List<String> fruit = Arrays.asList("香蕉","鳳梨","芭樂");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,fruit);
+        ListView listView = findViewById(R.id.list);
+        listView.setAdapter(adapter);
     }
 
     @Override

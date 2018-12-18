@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 public class AgeActivity extends BaseActivity {
     int[] numbers = {19, 20, 21, 22, 23, 24, 25};
-
+EditText edAge = findViewById(R.id.ed_age);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +47,19 @@ public class AgeActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AgeViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull AgeViewHolder holder, final int position) {
       holder.ageText.setText(String.valueOf(numbers[position]));
 
       if(numbers[position]==19){
           holder.ageText.setTextColor(Color.RED);
       }
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Log.d("AgeActivity","onClick"+numbers[position]) ;
+          edAge.setText(numbers[position]+"");
+          }
+      });
         }
 
         @Override
